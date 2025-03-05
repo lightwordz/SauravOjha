@@ -31,9 +31,9 @@
             </div>
             <p>A passionate data analyst with expertise in Python, Power BI, SQL, and Machine Learning. I love turning data into actionable insights.</p>
             <div class="social-icons">
-                <a href="https://www.linkedin.com/in/sauravojha/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/yourusername"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/sauravojha/" data-href="https://www.linkedin.com/in/sauravojha/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/yourusername" data-href="https://github.com/yourusername"><i class="fab fa-github"></i></a>
+                <a href="#" data-href="#"><i class="fab fa-twitter"></i></a>
             </div>
             <a href="#" class="btn">Download CV</a>
         </div>
@@ -174,7 +174,7 @@
             </div>
             <div class="timeline_item">
                 <div class="timeline_left">
-                    <div class="timeline_date-text">2021 - 2023</div>
+                    <div class="timeline_date-text">2025 - present</div>
                 </div>
                 <div class="timeline_centre">
                     <div class="timeline_circle"><i class="fas fa-graduation-cap"></i></div>
@@ -183,7 +183,7 @@
                     <div class="margin-bottom-xlarge">
                         <h3>MBA in Business Analytics</h3>
                         <h4>UPES University</h4>
-                        <div class="timeline_text">Specialized in Business Analytics, Data Science & Machine Learning. Completed coursework in Financial management, database management, and AI.</div>
+                        <div class=" timeline_text">Specialized in Business Analytics, Data Science & Machine Learning. Completed coursework in Financial management, database management, and AI.</div>
                     </div>
                     <div class="timeline_image-wrapper">
                         <img src="https://research.upes.ac.in/wp-content/uploads/2022/06/Logo-Icon.jpg" loading="lazy" alt="UPES University Logo" />
@@ -192,7 +192,7 @@
             </div>
             <div class="timeline_item">
                 <div class="timeline_left">
-                    <div class="timeline_date-text">2017 - 2020</div>
+                    <div class="timeline_date-text">2019 - 2023</div>
                 </div>
                 <div class="timeline_centre">
                     <div class="timeline_circle"><i class="fas fa-school"></i></div>
@@ -204,13 +204,13 @@
                         <div class="timeline_text">Majored in accounting with a focus on Business laws & Management.</div>
                     </div>
                     <div class="timeline_image-wrapper">
-                        <img src="https://www.uxdt.nic.in/wp-content/uploads/2020/06/IGNOU-Preview.png?x33755" loading="lazy" alt="IGNOU University Logo" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPvWJVb-OsmPrJ6KxqLTtlFOcBC2kzt8QKmw&s" loading="lazy" alt="IGNOU University Logo" />
                     </div>
                 </div>
             </div>
             <div class="timeline_item">
                 <div class="timeline_left">
-                    <div class="timeline_date-text">2015 - 2017</div>
+                    <div class="timeline_date-text">2017 - 2019</div>
                 </div>
                 <div class="timeline_centre">
                     <div class="timeline_circle"><i class="fas fa-school"></i></div>
@@ -333,9 +333,9 @@
                 <div class="social-links-container">
                     <h2>Social Links</h2>
                     <div class="social-icons">
-                        <a href="https://www.linkedin.com/in/sauravojha/"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://github.com/yourusername"><i class="fab fa-github"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/in/sauravojha/" data-href="https://www.linkedin.com/in/sauravojha/"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/yourusername" data-href="https://github.com/yourusername"><i class="fab fa-github"></i></a>
+                        <a href="#" data-href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
             </div>
@@ -409,6 +409,39 @@
                 if (titleTop < window.innerHeight * 0.8 && !title.classList.contains('animated')) {
                     title.classList.add('animated');
                 }
+            });
+        });
+
+        // Handle social icon clicks for better mobile responsiveness
+        document.addEventListener('DOMContentLoaded', () => {
+            const socialIcons = document.querySelectorAll('.social-icons a');
+            let lastClickTime = 0;
+            const debounceDelay = 300; // Debounce delay in milliseconds
+
+            socialIcons.forEach(icon => {
+                icon.addEventListener('click', (e) => {
+                    const now = Date.now();
+                    if (now - lastClickTime < debounceDelay) {
+                        e.preventDefault(); // Prevent multiple rapid clicks
+                        return;
+                    }
+                    lastClickTime = now;
+
+                    const href = icon.getAttribute('data-href');
+                    if (href) {
+                        e.preventDefault(); // Prevent default anchor behavior
+                        window.open(href, '_blank'); // Open in new tab for faster navigation
+                    }
+                });
+
+                // Handle touch events for mobile
+                icon.addEventListener('touchstart', (e) => {
+                    e.preventDefault(); // Prevent default touch behavior
+                    const href = icon.getAttribute('data-href');
+                    if (href) {
+                        window.open(href, '_blank'); // Open in new tab immediately
+                    }
+                });
             });
         });
     </script>
