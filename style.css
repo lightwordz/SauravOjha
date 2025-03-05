@@ -20,6 +20,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; /* Prevent horizontal overflow on mobile */
 }
 
 /* Header */
@@ -127,6 +128,7 @@ nav a.active {
     margin: 3rem 1.5rem 3rem 0;
     transition: 0.3s ease;
     color: #ffffff;
+    touch-action: manipulation; /* Improve touch responsiveness */
 }
 
 .social-icons a:hover {
@@ -417,7 +419,7 @@ nav a.active {
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 20px;
+    left: 15px; /* Shifted slightly left to create space for year */
     width: 4px;
     background: rgba(255, 255, 255, 0.1);
     overflow: hidden;
@@ -450,13 +452,16 @@ nav a.active {
 .timeline_left {
     width: 150px;
     text-align: right;
-    padding-right: 20px;
+    padding-right: 25px; /* Increased right padding to shift year right */
+    display: flex;
+    align-items: center; /* Center vertically */
 }
 
 .timeline_date-text {
     font-size: 1.6rem;
     color: #b0b0b0;
     font-weight: 500;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 .timeline_centre {
@@ -606,6 +611,10 @@ nav a.active {
     color: #caced5;
 }
 
+.social-links-container .social-icons a {
+    touch-action: manipulation; /* Improve touch responsiveness for contact social icons */
+}
+
 /* Footer */
 footer {
     background-color: #000000;
@@ -621,7 +630,7 @@ footer {
     margin-top: 1rem;
 }
 
-/* Responsive Design for Android (Original Media Query + Enhancements for Home) */
+/* Responsive Design for Android (Original Media Query + Enhancements) */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -674,6 +683,7 @@ footer {
         height: 3.5rem;
         font-size: 1.8rem;
         margin: 0 1rem;
+        transition: 0.1s ease; /* Faster transition for mobile */
     }
 
     .btn {
@@ -690,7 +700,7 @@ footer {
         height: 30px;
     }
 
-    /* Projects Section - Shorter and Compact (Unchanged from previous, but included for completeness) */
+    /* Projects Section - Shorter and Compact */
     .projects {
         padding: 4rem 5%;
     }
@@ -723,7 +733,7 @@ footer {
         margin-bottom: 1rem;
     }
 
-    /* Skills Section - Shorter and Compact (Unchanged from previous, but included for completeness) */
+    /* Skills Section - Shorter and Compact */
     .skills {
         padding: 4rem 5%;
     }
@@ -758,7 +768,7 @@ footer {
         font-size: 1.2rem;
     }
 
-    /* Experience & Education (Timeline) - Shorter and Compact (Unchanged from previous, but included for completeness) */
+    /* Experience & Education (Timeline) - Shorter and Compact with Better Layout to Prevent Overlap */
     .section-timeline,
     .experience {
         padding: 4rem 5%;
@@ -771,18 +781,40 @@ footer {
 
     .timeline_item {
         margin-bottom: 3rem;
+        flex-direction: column; /* Stack vertically on mobile */
+        align-items: flex-start; /* Align items to the start */
     }
 
     .timeline_left {
-        width: 100px;
+        width: 100%; /* Full width on mobile */
+        padding-right: 0; /* Remove right padding */
+        text-align: left; /* Left-align date on mobile */
+        margin-bottom: 1rem; /* Space before center icon */
+        padding-left: 30px; /* Shift year slightly right on mobile to avoid overlap with progress bar */
     }
 
     .timeline_date-text {
         font-size: 1.4rem;
+        text-align: left; /* Left-align date on mobile */
+    }
+
+    .timeline_centre {
+        width: 30px; /* Reduced width */
+        margin-left: 10px; /* Space from left date */
+        flex: 0 0 auto;
+    }
+
+    .timeline_circle {
+        width: 15px; /* Reduced size for mobile */
+        height: 15px;
+        font-size: 1rem;
     }
 
     .timeline_right {
+        flex: 1;
         padding: 1rem;
+        width: 100%; /* Ensure full width on mobile */
+        margin-left: 40px; /* Offset to align with progress bar */
     }
 
     .margin-bottom-xlarge h3 {
@@ -803,6 +835,11 @@ footer {
     .timeline_image-wrapper img {
         max-width: 80px;
         margin-top: 0.5rem;
+    }
+
+    .timeline_progress {
+        left: 10px; /* Adjust position to align with mobile layout */
+        width: 2px; /* Thinner line for mobile */
     }
 }
 
@@ -852,6 +889,7 @@ footer {
         height: 3rem;
         font-size: 1.6rem;
         margin: 0 0.8rem;
+        transition: 0.1s ease; /* Faster transition for mobile */
     }
 
     .btn {
@@ -868,7 +906,7 @@ footer {
         height: 25px;
     }
 
-    /* Projects Section - Even Shorter on Very Small Screens (Unchanged from previous, but included for completeness) */
+    /* Projects Section - Even Shorter on Very Small Screens */
     .projects {
         padding: 3rem 3%;
     }
@@ -896,7 +934,7 @@ footer {
         font-size: 1.1rem;
     }
 
-    /* Skills Section - Even Shorter on Very Small Screens (Unchanged from previous, but included for completeness) */
+    /* Skills Section - Even Shorter on Very Small Screens */
     .skills {
         padding: 3rem 3%;
     }
@@ -923,7 +961,7 @@ footer {
         font-size: 1rem;
     }
 
-    /* Experience & Education (Timeline) - Even Shorter on Very Small Screens (Unchanged from previous, but included for completeness) */
+    /* Experience & Education (Timeline) - Even Shorter on Very Small Screens with Better Layout to Prevent Overlap */
     .section-timeline,
     .experience {
         padding: 3rem 3%;
@@ -936,18 +974,40 @@ footer {
 
     .timeline_item {
         margin-bottom: 2rem;
+        flex-direction: column; /* Stack vertically on mobile */
+        align-items: flex-start; /* Align items to the start */
     }
 
     .timeline_left {
-        width: 70px;
+        width: 100%; /* Full width on mobile */
+        padding-right: 0;
+        text-align: left; /* Left-align date on mobile */
+        margin-bottom: 0.5rem; /* Reduced space before center icon */
+        padding-left: 35px; /* Shift year further right on very small screens to avoid overlap with progress bar */
     }
 
     .timeline_date-text {
         font-size: 1.2rem;
+        text-align: left; /* Left-align date on mobile */
+    }
+
+    .timeline_centre {
+        width: 25px; /* Further reduced for very small screens */
+        margin-left: 5px; /* Reduced space from left date */
+        flex: 0 0 auto;
+    }
+
+    .timeline_circle {
+        width: 12px; /* Even smaller for mobile */
+        height: 12px;
+        font-size: 0.8rem;
     }
 
     .timeline_right {
+        flex: 1;
         padding: 0.8rem;
+        width: 100%; /* Ensure full width on mobile */
+        margin-left: 30px; /* Reduced offset for very small screens */
     }
 
     .margin-bottom-xlarge h3 {
@@ -966,7 +1026,12 @@ footer {
         max-width: 60px;
     }
 
-    /* Ensure Contact Section (if applicable) is Shorter (Unchanged from previous, but included for completeness) */
+    .timeline_progress {
+        left: 5px; /* Adjust position further for very small screens */
+        width: 2px; /* Thinner line for mobile */
+    }
+
+    /* Ensure Contact Section (if applicable) is Shorter */
     .contact-container {
         padding: 2rem 3%;
     }
